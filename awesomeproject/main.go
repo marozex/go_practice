@@ -1,9 +1,11 @@
 package main
 
 import (
+	"awesomeproject/mylib"
 	"fmt"
 	// "os/user"
 	// "time"
+
 )
 
 func init() {
@@ -44,4 +46,7 @@ func main() {
 
 	m := map[string]int{"apple": 100}
 	fmt.Println((m))
+
+	lis := []int{1,2,3,4,5}
+	fmt.Println(mylib.Average(lis))
 }
