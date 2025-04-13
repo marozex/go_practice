@@ -1,0 +1,12 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: go_mysql
+    ports:
+      - 3344:3306
+    environment:
+      MYSQL_USER: app
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: api_database
+    volumes:
+      - ./external-apps/db:/docker-entrypoint-initdb.d

@@ -3,9 +3,11 @@ package main
 import (
 	"awesomeproject/mylib"
 	"fmt"
+	"io"
+
 	// "os/user"
 	// "time"
-
+	"net/http"
 )
 
 func init() {
@@ -17,6 +19,12 @@ func bazz() {
 }
 
 func main() {
+res,_ := http.Get("http://example.com")
+defer res.Body.Close()
+body,_ := io.ReadAll(res.Body)
+fmt.Println(string(body))
+
+
 	// bazz()
 	// fmt.Println("HELLO WORLD")
 	// fmt.Println(time.Now())
