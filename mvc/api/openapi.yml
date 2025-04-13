@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  title: Go API template
+  version: 0.1.0
+
+servers:
+  - url: http://localhost:8888/api/v1
+
+paths:
+  /album/{id}:
+    get:
+      summary: find album by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AlbumResponse"
+
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          enum:
+            - food
+            - music
+            - sports
+      required:
+        - name
+
+    AlbumResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        Category:
+          $ref: "#/components/schemas/Category"
